@@ -18,11 +18,11 @@ const UserSchema = new Schema(
         message: 'Please enter a valid email address'
       }
     },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
-    },
+    // createdAt: {
+    //   type: Date,
+    //   default: Date.now,
+    //   get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
+    // },
     thoughts: {
         type: Schema.Types.ObjectId,
         ref: 'Thought'

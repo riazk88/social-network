@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const {
-    getAllThought,
+    getAllThoughts,
     getThoughtById,
     addThought,
     updateThought,
@@ -13,7 +13,7 @@ const {
 
 router
   .route('/')
-  .get(getAllThought)
+  .get(getAllThoughts)
 
 router
   .route('/:userId')

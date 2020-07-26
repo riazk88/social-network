@@ -36,7 +36,6 @@ const thoughtController = {
         });
   },
 
-  // remove comment
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
         .populate({
