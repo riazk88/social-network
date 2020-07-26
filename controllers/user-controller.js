@@ -45,9 +45,9 @@ const userController = {
     },
 
     // createUser
-    addUser({ body }, res) {
+    createUser({ body }, res) {
     User.create(body)
-      .then(dbPizzaData => res.json(dbUserData))
+      .then(dbUserData => res.json(dbUserData))
       .catch(err => res.status(400).json(err));
     },
 
