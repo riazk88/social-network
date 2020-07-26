@@ -11,18 +11,10 @@ const UserSchema = new Schema(
     },
     email: {
       type: String,
-      required: 'Please provide an email address',
+      required: true,
       unique: true,
-      validate: {
-        validator: () => Promise.resolve(false),
-        message: 'Please enter a valid email address'
-      }
+      match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/]
     },
-    // createdAt: {
-    //   type: Date,
-    //   default: Date.now,
-    //   get: (createdAtVal) => moment(createdAtVal).format('MMM DD, YYYY [at] hh:mm a')
-    // },
     thoughts: {
         type: Schema.Types.ObjectId,
         ref: 'Thought'
@@ -48,13 +40,5 @@ UserSchema.virtual('friendCount').get(function() {
 });
 
 const User = model('User', UserSchema);
-
-const user = new User();
-
-user.email = 'test@test.co';
-user.validate().catch(error => {
-  assert.ok(error);
-  assert.equal(error.errors['email'].message, 'Email Validation Failed');
-});
 
 module.exports = User;
