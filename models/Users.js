@@ -1,7 +1,7 @@
 const moment = require('moment');
 const { Schema, model } = require('mongoose');
 
-const UserSchema = new Schema(
+const UsersSchema = new Schema(
   {
     username: {
       type: String,
@@ -17,12 +17,12 @@ const UserSchema = new Schema(
     },
     thoughts: {
         type: Schema.Types.ObjectId,
-        ref: 'Thought'
+        ref: 'Thoughts'
     },
     friends: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Users'
       }
     ]
   },
@@ -35,10 +35,10 @@ const UserSchema = new Schema(
   }
 );
 
-UserSchema.virtual('friendCount').get(function() {
+UsersSchema.virtual('friendCount').get(function() {
   return this.friends.length;
 });
 
-const User = model('User', UserSchema);
+const Users = model('Users', UsersSchema);
 
-module.exports = User;
+module.exports = Users;
